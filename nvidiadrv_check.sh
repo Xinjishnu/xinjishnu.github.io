@@ -21,5 +21,5 @@ nvidia_drv_current=$(modinfo nvidia |grep version | sed '2d' |cut -c 17-22)
 if [ "$nvidia_drv_new" = "$nvidia_drv_current" ]; then
     exit
 else 
-    notify-send  -i /home/mporr/Pictures/Nvidia-1.png "New NVIDIA driver version $nvidia_drv_new available for download!"
+    notify-send  -i /usr/share/pixmaps/Nvidia-1.png "NVIDIA graphics driver version $nvidia_drv_new available for download."
 fi
