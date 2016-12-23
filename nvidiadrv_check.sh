@@ -15,8 +15,7 @@
 nvidia_drv_new=$(curl -L ftp://download.nvidia.com/XFree86/Linux-x86_64/latest.txt | cut -c 1-6)
 #echo $nvidia_drv_new 
 
-nvidia_drv_current=$375.01
-#nvidia_drv_current=$(modinfo nvidia |grep version | sed '2d' |cut -c 17-22)
+nvidia_drv_current=$(modinfo nvidia |grep version | sed '2d' |cut -c 17-22)
 #echo $nvidia_drv_current 
 
 if [ "$nvidia_drv_new" = "$nvidia_drv_current" ]; then
