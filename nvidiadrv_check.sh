@@ -15,11 +15,15 @@
 nvidia_drv_new=$(curl -L ftp://download.nvidia.com/XFree86/Linux-x86_64/latest.txt | cut -c 1-6)
 #echo $nvidia_drv_new 
 
+#nvidia_drv_current=$375.01
 nvidia_drv_current=$(modinfo nvidia |grep version | sed '2d' |cut -c 17-22)
 #echo $nvidia_drv_current 
 
-if [ "$nvidia_drv_new" = "$nvidia_drv_current" ]; then
-    exit
+if echo $nvidia_drv_new $nvidia_drv_current | awk '{exit $1>$2?0:1}'  
+then
+   notify-send  -i /usr/share/pixmaps/Nvidia-1.png "NVIDIA graphics driver version $nvidia_drv_new available for download."
+
 else 
-    notify-send  -i /usr/share/pixmaps/Nvidia-1.png "NVIDIA graphics driver version $nvidia_drv_new available for download."
+
+   exit 0
 fi
